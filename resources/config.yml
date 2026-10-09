@@ -1,6 +1,6 @@
 ---
-# blacklist: Keep inventory is false in the listed worlds.
-# whitelist: Keep inventory is true in the listed worlds.
+# blacklist: Preserve inventory outside the listed worlds.
+# whitelist: Preserve inventory only in the listed worlds.
 mode: blacklist
 worlds: []
 ...
