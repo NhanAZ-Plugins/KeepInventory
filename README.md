@@ -8,7 +8,7 @@ KeepInventory preserves a player's items after death in selected Axolotl-PM worl
 - PHP 8.1 or newer, as required by the Axolotl-PM 5.x baseline.
 - No external plugin or runtime library dependency.
 
-The exact release PHAR has been checked on Axolotl-PM 5.49.1. This confirms startup, not an in-game death and respawn. The plugin uses the world's display name for matching. Names are case-sensitive.
+The exact release PHAR has been checked on Axolotl-PM 5.49.1 with a connected offline Bedrock protocol client. A test probe gave the player seven diamonds, triggered death, observed `PlayerDeathEvent` with inventory retention enabled, and invoked server-side respawn. The player still held seven diamonds afterward. This covers the default configuration in one world. The game client's respawn control, other world lists, and other server revisions remain unverified. The plugin uses the world's display name for matching. Names are case-sensitive.
 
 ## Installation
 
@@ -29,7 +29,7 @@ In worlds outside the selected set, KeepInventory leaves the death event's inven
 
 ## Build and verification
 
-The [build workflow](.github/workflows/build.yml) runs the inventory policy tests and PHPStan at maximum level, then uses [DevTools](https://github.com/NhanAZ/DevTools) to build and inspect a downloadable PHAR. The workflow pins the tool and server source to reviewed commits. A passing workflow does not prove death and respawn behavior with a Bedrock client.
+The [build workflow](.github/workflows/build.yml) runs the inventory policy tests and PHPStan at maximum level, then uses [DevTools](https://github.com/NhanAZ/DevTools) to build and inspect a downloadable PHAR. The workflow pins the tool and server source to reviewed commits. The connected death test above is separate from the workflow and applies to the released PHAR.
 
 For a local build, follow the [DevTools CLI guide](https://github.com/NhanAZ/DevTools/blob/main/docs/cli.md) with this repository as the project directory. Run the policy cases with `php tests/inventory-policy.php`.
 
